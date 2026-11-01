@@ -1,0 +1,67 @@
+/* Custom styles to complement Tailwind and achieve the retro feel */
+:root {
+    --retro-border: #5B534D;
+    --retro-bg: #F6EFD9;
+    --retro-text: #5B534D;
+}
+
+body {
+    font-family: 'IBM Plex Mono', monospace;
+    -webkit-font-smoothing: none; /* Makes fonts look more pixelated/retro */
+}
+
+.font-pixel {
+    font-family: 'Press Start 2P', cursive;
+}
+
+/* Retro-style scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 12px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: var(--retro-bg);
+    border-left: 2px solid var(--retro-border);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #AFC8E8;
+    border: 2px solid var(--retro-border);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #D8CFF0;
+}
+
+/* Task item animations */
+.task-item {
+    transition: all 0.2s ease;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* Visual state for completed tasks */
+.task-completed {
+    background-color: #A9C5A0 !important;
+    opacity: 0.8;
+}
+
+.task-completed .task-text {
+    text-decoration: line-through;
+    color: #5B534D;
+    opacity: 0.6;
+}
+
+/* Input field style */
+#taskInput {
+    box-shadow: inset 2px 2px 0px rgba(0,0,0,0.1);
+}
+
+/* Button press effect */
+button:active {
+    box-shadow: inset 2px 2px 0px rgba(0,0,0,0.2);
+}

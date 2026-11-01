@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoTop - Task Widget</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Press Start 2P for titles, IBM Plex Mono for interface -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#F0F0F0] flex items-center justify-center min-h-screen p-4">
+
+    <!-- Main Widget Window -->
+    <div id="widget" class="w-full max-w-md bg-[#F6EFD9] rounded-lg shadow-xl border-4 border-[#5B534D] overflow-hidden">
+
+        <!-- Window Title Bar (Retro Windows Style) -->
+        <div class="bg-[#AFC8E8] border-b-4 border-[#5B534D] p-2 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-4 h-4 bg-[#F6EFD9] border-2 border-[#5B534D] rounded-sm"></div>
+                <h1 class="font-pixel text-[12px] text-[#5B534D] tracking-tight">TodoTop</h1>
+            </div>
+            <div class="flex gap-1">
+                <div class="w-5 h-5 bg-[#F6EFD9] border-2 border-[#5B534D] flex items-center justify-center text-[10px] font-bold text-[#5B534D] cursor-default">_</div>
+                <div class="w-5 h-5 bg-[#F6EFD9] border-2 border-[#5B534D] flex items-center justify-center text-[10px] font-bold text-[#5B534D] cursor-default">□</div>
+                <div class="w-5 h-5 bg-[#D98C7C] border-2 border-[#5B534D] flex items-center justify-center text-[10px] font-bold text-[#5B534D] cursor-default">X</div>
+            </div>
+        </div>
+
+        <!-- Header Content -->
+        <div class="p-6 text-center">
+            <div class="flex justify-center mb-2">
+                <!-- Decorative SVG Illustration -->
+                <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="20" y="20" width="60" height="60" rx="10" fill="#E8B7C8" stroke="#5B534D" stroke-width="4"/>
+                    <path d="M35 40H65M35 50H65M35 60H45" stroke="#5B534D" stroke-width="4" stroke-linecap="round"/>
+                    <circle cx="70" cy="30" r="8" fill="#AFC8E8" stroke="#5B534D" stroke-width="3"/>
+                </svg>
+            </div>
+            <h2 class="font-pixel text-[10px] text-[#5B534D] opacity-70 uppercase tracking-widest">Task Widget</h2>
+        </div>
+
+        <!-- Input Area -->
+        <div class="px-6 pb-4">
+            <div class="flex gap-2">
+                <input type="text" id="taskInput"
+                       placeholder="Digite uma nova tarefa"
+                       class="flex-1 p-2 border-2 border-[#5B534D] bg-white font-mono text-[#5B534D] focus:outline-none focus:ring-2 focus:ring-[#AFC8E8] placeholder:text-gray-400">
+                <button id="addTaskBtn"
+                        class="bg-[#BFD8B8] border-2 border-[#5B534D] px-4 py-2 font-mono text-[#5B534D] font-bold hover:bg-[#A9C5A0] active:translate-y-1 transition-all">
+                    Adicionar
+                </button>
+            </div>
+        </div>
+
+        <!-- List Area -->
+        <div class="px-6 py-2">
+            <ul id="taskList" class="space-y-3 max-h-80 overflow-y-auto pr-2 custom-scrollbar">
+                <!-- Tasks will be injected here -->
+            </ul>
+
+            <!-- Empty State (Hidden by default) -->
+            <div id="emptyState" class="hidden flex-col items-center justify-center py-10 text-center">
+                <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="mb-4 opacity-50">
+                    <rect x="25" y="25" width="50" height="50" rx="5" fill="#D8CFF0" stroke="#5B534D" stroke-width="3"/>
+                    <path d="M40 45L60 55M60 45L40 55" stroke="#5B534D" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+                <p class="font-mono text-[#5B534D] opacity-60 text-sm">Sua lista está vazia.<br>Hora de planejar o dia!</p>
+            </div>
+        </div>
+
+        <!-- Footer / Summary -->
+        <div class="bg-[#E8B7C8] border-t-4 border-[#5B534D] p-4 flex flex-wrap justify-between items-center gap-4">
+            <div class="flex gap-4 font-mono text-[12px] text-[#5B534D]">
+                <span>Pendentes: <b id="pendingCount">0</b></span>
+                <span>Concluídas: <b id="completedCount">0</b></span>
+            </div>
+            <button id="clearCompletedBtn"
+                    class="text-[11px] font-mono text-[#5B534D] underline hover:text-white transition-colors">
+                Limpar concluídas
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
